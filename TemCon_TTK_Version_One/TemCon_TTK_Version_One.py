@@ -358,14 +358,45 @@ def clearTable():
     converted_scale_three_labelframe_label.configure(text="")
     converted_scale_four_labelframe_label.configure(text="")
     scaleTemp.delete(0, END)
-    #getHero()
+
+def tempError001():
+        error_screen_window = Toplevel(window)
+        error_screen_window.title("!!! Scale Error 001 !!!")
+        error_screen_window.configure(bg="#f0f0f0")
+        width = 375
+        height = 200
+        x = (error_screen_window.winfo_screenwidth()//2)-(width//2)
+        y = (error_screen_window.winfo_screenheight()//2)-(height//2)
+        error_screen_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+        error_label = tk.Label(master = error_screen_window)
+        error_label.configure(bg="#ca8888", fg="#9932cc", font=("Roboto, sans-serif", 14, "bold"), wraplength=290,  text="!!! Temperature Not Found 001 !!!\n\nPlease enter a number to convert!!")
+        error_label.pack(fill="both", expand=True, side="top", ipady=5, ipadx=5)
+        
+def scaleError001():
+        error_screen_window = Toplevel(window)
+        error_screen_window.title("!!! Scale Error 001 !!!")
+        error_screen_window.configure(bg="#f0f0f0")
+        width = 375
+        height = 200
+        x = (error_screen_window.winfo_screenwidth()//2)-(width//2)
+        y = (error_screen_window.winfo_screenheight()//2)-(height//2)
+        error_screen_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+        error_label = tk.Label(master = error_screen_window)
+        error_label.configure(bg="#ca8888", fg="#9932cc", font=("Roboto, sans-serif", 14, "bold"), wraplength=290,  text="!!! Scale Not Found 001 !!!\n\nPlease enter a scale to convert!!")
+        error_label.pack(fill="both", expand=True, side="top", ipady=5, ipadx=5)
 
     
 # Function retrieves the Scale Chosen and the Temperature to convert, then displays the Conversion Table
 def setScaleTemp() -> [str]: 
         choice = scale.get()
         temp = scaleTemp.get()
-        if choice == "Kelvin":
+        if choice == 'Choose A Scale':
+                scaleError001()
+                return
+        elif temp == '':
+                tempError001()
+                return
+        elif choice == "Kelvin":
                 converted_scale_one_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(int(temp) * 1, 1), width=7, anchor='center', justify="center")
                 converted_scale_two_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(((int(temp) - 273.15) * 1.8) + 32, 2), width=7, anchor='center', justify="center")
                 converted_scale_three_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(int(temp) - 273.15, 1), width=7, anchor='center', justify="center")
