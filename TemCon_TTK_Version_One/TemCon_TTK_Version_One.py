@@ -186,7 +186,7 @@ def changeMainFrame():
                 breakpoint
 
 
-def ChangeTempFrame():
+def changeTempFrame():
         styles = temperature_setting_frame.cget("style")
         if styles == "tempSettingFrameLight.TFrame":
                 temperature_setting_frame.configure(style="tempSettingFrameDark.TFrame")
@@ -331,7 +331,7 @@ def changeLawful():
 
 def changestyle():
         changeMainFrame()
-        ChangeTempFrame()
+        changeTempFrame()
         changeMainLabel()     
         changeMainTitle()
         changeScales()
