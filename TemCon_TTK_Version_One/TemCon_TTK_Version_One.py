@@ -7,7 +7,12 @@ import os
 #Main Window
 window = tk.Tk()
 window.title("TemCon TTK Ver 1")
-window.geometry("310x440")
+# Center The Main Program Window When Launched
+width = 310
+height = 440
+x = (window.winfo_screenwidth()//2)-(width//2)
+y = (window.winfo_screenheight()//2)-(height//2)
+window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 window.configure(background="#ffe4c4")
 style=ttk.Style()   # ttk Style Library
 menu = tk.Menu(window)
@@ -361,7 +366,7 @@ def clearTable():
 
 def tempError001():
         error_screen_window = Toplevel(window)
-        error_screen_window.title("!!! Scale Error 001 !!!")
+        error_screen_window.title("!!! Temperature Error 001 !!!")
         error_screen_window.configure(bg="#f0f0f0")
         width = 375
         height = 200
@@ -374,7 +379,7 @@ def tempError001():
         
 def scaleError001():
         error_screen_window = Toplevel(window)
-        error_screen_window.title("!!! Scale Error 001 !!!")
+        error_screen_window.title("!!! Scale Error 002 !!!")
         error_screen_window.configure(bg="#f0f0f0")
         width = 375
         height = 200
@@ -382,7 +387,7 @@ def scaleError001():
         y = (error_screen_window.winfo_screenheight()//2)-(height//2)
         error_screen_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
         error_label = tk.Label(master = error_screen_window)
-        error_label.configure(bg="#ca8888", fg="#9932cc", font=("Roboto, sans-serif", 14, "bold"), wraplength=290,  text="!!! Scale Not Found 001 !!!\n\nPlease enter a scale to convert!!")
+        error_label.configure(bg="#ca8888", fg="#9932cc", font=("Roboto, sans-serif", 14, "bold"), wraplength=290,  text="!!! Scale Not Found 002 !!!\n\nPlease enter a scale to convert!!")
         error_label.pack(fill="both", expand=True, side="top", ipady=5, ipadx=5)
 
     
@@ -561,10 +566,10 @@ logo_frame = ttk.Frame(master=lawful_privacy_frame)
 logo_frame.configure(style="lawfulLight.TFrame")
 logo_frame.pack(fil="both", expand=True, side="top")
 # tcttk Logo Image used in Frame
-tcttk_logo = ImageTk.PhotoImage(Image.open("imgs/dashWoorkZ_Sovereign_Society_logo.png"))
-tcttk_logo_label = ttk.Label(master = logo_frame,image=tcttk_logo, width=1500)
-tcttk_logo_label.configure(style="tcttkLight.TLabel", anchor="center", justify="center")
-tcttk_logo_label.pack(fill="both", expand=True, side="top",)
+dwrx_logo = ImageTk.PhotoImage(Image.open("imgs/dss_logo.png"))
+dwrx_logo_label = ttk.Label(master = logo_frame,image=dwrx_logo, width=150)
+dwrx_logo_label.configure(style="tcttkLight.TLabel", anchor="center", justify="center")
+dwrx_logo_label.pack(fill="both", expand=True, side="top",)
 privacy_frame = ttk.Frame(master=lawful_privacy_frame)
 privacy_frame.configure(style="lawfulLight.TFrame")
 privacy_frame.pack(fill="both", expand=True)
@@ -583,11 +588,16 @@ lawful_frame_label.pack(fill="x", expand="True", side="top", ipady=5, ipadx=5)
 def open_donate_window():
     donate_window = Toplevel(window)
     donate_window.title("Donate")
-    donate_window.geometry("310x200")
+    width = 400
+    height = 350
+    x = (donate_window.winfo_screenwidth()//2)-(width//2)
+    y = (donate_window.winfo_screenheight()//2)-(height//2)
+    donate_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
     donate_window.configure(bg="#f0f0f0")
     donate_label = Label(donate_window)
-    donate_label.configure(font=("Times New Roman", 11, "bold"),highlightbackground='#ffa500', pady=10, highlightcolor='#deb887', highlightthickness=3, takefocus=True,  background="#ffe4c4", foreground="#5c3608", text="Donate:\nIf you enjoyed this program and would\n like to contribute to our work,\n you can donate by emailing:\ndashWoorkz Sovereign Society:\nEmail: dashwoorkz@dashwoorkz.ca\nor through E-Transfer to:\nLord :Dash: La Londe\nManaging Director\ndash@dashwoorkz.ca")
+    donate_label.configure(font=("Times New Roman", 11, "bold"),highlightbackground='#ffa500', pady=10, highlightcolor='#deb887', highlightthickness=3, takefocus=True,  background="#ffe4c4", foreground="#5c3608", text="Donate:\nIf you enjoyed this program and would\n like to contribute to our work:\n\ndashWoorkz Sovereign Society:\ndashwoorkz@dashwoorkz.ca\n\nE-Transfer:\nLord :Dash: La Londe\nManaging Director:\ndash@dashwoorkz.ca\n\n Bitcoin:\nBTC:38YwKspQ8hdxAmGQUPP7LvXPRucdZURNu5\n\n Merchandise Online:\nhttp://everythingdash.creator-spring.com/")
     donate_label.pack(fill="both", expand=True)
+    
 
 
 
@@ -595,6 +605,11 @@ def open_contact_window():
     contact_window = Toplevel(window)
     contact_window.title("Contact Us")
     contact_window.geometry("310x200")
+    width = 310
+    height = 220
+    x = (contact_window.winfo_screenwidth()//2)-(width//2)
+    y = (contact_window.winfo_screenheight()//2)-(height//2)
+    contact_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
     contact_window.configure(bg="#f0f0f0")
     
     label_contact = Label(contact_window, text="Contact Information", foreground="#fd3adf", bg="#f7d4f6", font=("Helvetica", 12, "bold"))
@@ -623,12 +638,19 @@ def open_contact_window():
 
     label_cs_email = Label(contact_window, text="Email: jeanette.elizabeth@dashwoorkz.ca", foreground="#c27012", bg="#f3e1c9", font=("Helvetica", 10))
     label_cs_email.pack(fill="both", expand=True)
+    
+    label_dwrx = Label(contact_window, text="Visit: http://dashwoorkz.ca", foreground="#c27012", bg="#cae8f3", font=("Helvetica", 16))
+    label_dwrx.pack(fill="both", expand=True, ipady=5)
 
 
 def open_mit_window():
     mit_window = Toplevel(window)
     mit_window.title("MIT License")
-    mit_window.geometry("350x400")
+    width = 350
+    height = 400
+    x = (mit_window.winfo_screenwidth()//2)-(width//2)
+    y = (mit_window.winfo_screenheight()//2)-(height//2)
+    mit_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
     mit_window.configure(bg="#f0f0f0")
     mit_label = Label(mit_window)
     mit_label.configure(font=("Times New Roman", 9, "bold"),highlightbackground='#2391ff', wraplength=280, pady=10, highlightcolor='#35cbe6', highlightthickness=3, takefocus=True,  background="#85c0ea", foreground="#206eff", 
