@@ -402,7 +402,7 @@ def setScaleTemp() -> [str]:
                 tempError001()
                 return
         elif choice == "Kelvin":
-                converted_scale_one_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(int(temp) * 1, 1), width=7, anchor='center', justify="center")
+                converted_scale_one_labelframe_label.configure(style="convertedScaleLableFrameLableDark.TLabel", text= round(int(temp) * 1, 1), width=7, anchor='center', justify="center")
                 converted_scale_two_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(((int(temp) - 273.15) * 1.8) + 32, 2), width=7, anchor='center', justify="center")
                 converted_scale_three_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(int(temp) - 273.15, 1), width=7, anchor='center', justify="center")
                 converted_scale_four_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(int(temp) + 491.67, 1), width=7, anchor='center', justify="center")
@@ -411,7 +411,7 @@ def setScaleTemp() -> [str]:
                 
         elif choice == "Fahrenheit":
                 converted_scale_one_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(((int(temp) - 32) / 1.79999999) + 273.15, 2), width=7, anchor='center', justify="center")
-                converted_scale_two_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(int(temp) * 1, 1), width=7, anchor='center', justify="center")
+                converted_scale_two_labelframe_label.configure(style="convertedScaleLableFrameLableDark.TLabel", text= round(int(temp) * 1, 1), width=7, anchor='center', justify="center")
                 converted_scale_three_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round((int(temp) - 32) * (5/9), 2),  width=7, anchor='center', justify="center")
                 converted_scale_four_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(int(temp) + 459.67, 2) ,width=7, anchor='center', justify="center")
                 scales_response_frame.pack( fill="x", expand=True)
@@ -421,14 +421,14 @@ def setScaleTemp() -> [str]:
                 converted_scale_one_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(((int(temp)- 491.67) / 1.79999999) + 273.15, 2), width=7, anchor='center', justify="center")
                 converted_scale_two_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(int(temp) - 459.67, 2), width=7, anchor='center', justify="center")
                 converted_scale_three_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round((int(temp) - 491.67) / 1.79999999, 2), width=7, anchor='center', justify="center")
-                converted_scale_four_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(int(temp) * 1, 1), width=7, anchor='center', justify="center")
+                converted_scale_four_labelframe_label.configure(style="convertedScaleLableFrameLableDark.TLabel", text= round(int(temp) * 1, 1), width=7, anchor='center', justify="center")
                 scales_response_frame.pack( fill="x", expand=True)
                 return
         
         elif choice == "Celcius":
                 converted_scale_one_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(int(temp)  + 273.15, 2), width=7, anchor='center', justify="center")
                 converted_scale_two_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(int(temp)  * (9/5) + 32, 2), width=7, anchor='center', justify="center")
-                converted_scale_three_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round(int(temp) * 1, 2) , width=7, anchor='center', justify="center")
+                converted_scale_three_labelframe_label.configure(style="convertedScaleLableFrameLableDark.TLabel", text= round(int(temp) * 1, 2) , width=7, anchor='center', justify="center")
                 converted_scale_four_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel", text= round((int(temp) * 1.8) + 459.67, 2), width=7, anchor='center', justify="center")
                 scales_response_frame.pack( fill="x", expand=True)
                 return
