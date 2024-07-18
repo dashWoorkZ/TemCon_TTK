@@ -358,10 +358,10 @@ def changestyle():
       
 # General Function Call to Clear the Conversion Table and Entry Input    
 def clearTable():
-    converted_scale_one_labelframe_label.configure(text="")
-    converted_scale_two_labelframe_label.configure(text="")
-    converted_scale_three_labelframe_label.configure(text="")
-    converted_scale_four_labelframe_label.configure(text="")
+    converted_scale_one_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel",text="")
+    converted_scale_two_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel",text="")
+    converted_scale_three_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel",text="")
+    converted_scale_four_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel",text="")
     scaleTemp.delete(0, END)
 
 def tempError001():
