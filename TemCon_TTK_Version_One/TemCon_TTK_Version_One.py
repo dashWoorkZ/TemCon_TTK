@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk
@@ -9,7 +10,7 @@ window = tk.Tk()
 window.title("TemCon TTK Ver 1")
 # Center The Main Program Window When Launched
 width = 310
-height = 440
+height = 480
 x = (window.winfo_screenwidth()//2)-(width//2)
 y = (window.winfo_screenheight()//2)-(height//2)
 window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
@@ -19,13 +20,40 @@ menu = tk.Menu(window)
 style.theme_use("clam")
 
 
+# MIT License
+
+# TemCon TTK Version One - Temperature Conversion Tool
+# Copyright (c) 2024 dashWoorkZ Sovereign Society
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy 
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+# ================================================================================================================================================================
+# ================================================= Start of Conversion Styling =============================================================================
+# ================================================================================================================================================================
+
 style.configure("mainFrameLight.TFrame",  relief=tk.SUNKEN,takefocus=False, background="#ffe4c4")
 style.configure("mainFrameDark.TFrame",  relief=tk.SUNKEN,takefocus=False, background="#fc9211")
 
 style.configure("mainFrameTitleLight.TFrame", relief=tk.SUNKEN,takefocus=False, bd=5, highlightthickness=5, background="#ffe4c4", foreground="#00fa9a", highlightbackground='#ffa500',  highlightcolor='#fc9211', anchor="center")
 style.configure("mainFrameTitleDark.TFrame", relief=tk.SUNKEN,takefocus=False, bd=5, highlightthickness=5,  background="#00fa9a", foreground="#ffe4c4", highlightbackground='#fc9211', highlightcolor='#ffa500', anchor="center")
 
-style.configure("mainLabelLight.TLabel",relief=tk.RAISED, font=("Times New Roman", 12, "bold"), background="#ffe4c4", foreground="#5c3608", highlightbackground='#ffa500', pady=10, highlightcolor='#deb887', highlightthickness=3, takefocus=True)
+style.configure("mainLabelLight.TLabel",relief=tk.RAISED, font=("Times New Roman", 14, "bold"), background="#aad3fc", foreground="dodgerblue", highlightbackground='#ffa500', pady=10, highlightcolor='#deb887', highlightthickness=3, takefocus=True)
 style.configure("mainLabelDark.TLabel",relief=tk.RAISED, font=("Times New Roman", 12, "bold"), background="#5c3608", foreground="#ffe4c4", highlightbackground='#deb887', highlightcolor='#c97911', highlightthickness=3, takefocus=True)
 
 style.configure("mainLabelTitleLight.TLabel",relief=tk.RAISED, font=("Times New Roman", 11, "bold"), background="#ffe4c4", foreground="#5c3608", highlightbackground='#ffa500', pady=10, highlightcolor='#deb887', highlightthickness=3, takefocus=True)
@@ -80,12 +108,13 @@ info_menu = tk.Menu(menu, tearoff = False, activeforeground="antiquewhite", acti
 info_menu.add_command(label = "Lawful Notice", command=lambda: getInfo())
 info_menu.add_command(label = "MIT License", command=lambda: open_mit_window())
 info_menu.add_command(label = "Contact", command=lambda: open_contact_window())
-info_menu.add_command(label = "Donate", command=lambda: open_donate_window())
+info_menu.add_command(label = "Support", command=lambda: open_support_window())
 menu.add_cascade(label ="[> Info <]", menu = info_menu, activeforeground="antiquewhite", activebackground="#5c3608", background="antiquewhite", foreground="#5c3608")
 # Apps Menu to Open and Close TempCalc and to Exit the Program
 apps_menu = tk.Menu(menu, tearoff = False, activeforeground="antiquewhite", activebackground="#5c3608", background="antiquewhite", foreground="#5c3608")
 apps_menu.add_command(label = "Open", command=lambda: openTC())
 apps_menu.add_command(label = "Close", command=lambda: closeTC())
+apps_menu.add_command(label = "Reset", command=lambda: clearTable())
 apps_menu.add_command(label = "Exit", command = lambda: quit_main())
 menu.add_cascade(label ="<[T]> Apps <[C]>", menu = apps_menu, foreground="antiquewhite", background="burlywood", activebackground="antiquewhite", activeforeground="burlywood")
 
@@ -136,17 +165,17 @@ main_frame.configure(style="mainFrameLight.TFrame")
 main_frame.pack(fill="y", expand=True)
 main_frame_title = ttk.Frame(master=main_frame)
 main_frame_title.configure(style="mainFrameTitleLight.TFrame")
-main_frame_title.pack(fill="both", expand=True, side="top")
+main_frame_title.pack(fill="both", expand=True, side="top", ipadx=5)
 
 main_label = ttk.Label(main_frame_title)
 main_label.configure(text="TemCon\n TTk Ver 1", style="mainLabelLight.TLabel", justify="center", anchor="center", compound="left") 
 main_label.pack(fill="both", expand=True, side="right")
 
 # tcttk Logo Image used in Frame
-tc2024_logo = ImageTk.PhotoImage(Image.open("imgs/tc2024_logo.png"), width=12, height=12)
+tc2024_logo = ImageTk.PhotoImage(Image.open("imgs/tc2024_Logo.png"), width=12, height=12)
 tc2024_logo_label = ttk.Label(master = main_frame_title,image=tc2024_logo)
-tc2024_logo_label.configure(anchor="nw")
-tc2024_logo_label.pack(fill="none", expand=True, side="top")
+tc2024_logo_label.configure(anchor="center", style="mainLabelLight.TLabel")
+tc2024_logo_label.pack(fill="both", expand=True, side="left")
 
 main_label_title = ttk.Label(main_frame)
 main_label_title.configure(text="TEMPERATURE CONVERSION TOOL", style="mainLabelTitleLight.TLabel", justify="center", anchor="center") 
@@ -363,7 +392,8 @@ def clearTable():
     converted_scale_three_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel",text="")
     converted_scale_four_labelframe_label.configure(style="convertedScaleLableFrameLableLight.TLabel",text="")
     scaleTemp.delete(0, END)
-
+    
+    
 def tempError001():
         error_screen_window = Toplevel(window)
         error_screen_window.title("!!! Temperature Error 001 !!!")
@@ -585,20 +615,22 @@ lawful_frame_label.configure(style="lawfulLight.TLabel", font=("Times New Roman"
 lawful_frame_label.pack(fill="x", expand="True", side="top", ipady=5, ipadx=5)
 
 
-def open_donate_window():
-    donate_window = Toplevel(window)
-    donate_window.title("Donate")
+# Support Window
+def open_support_window():
+    support_window = Toplevel(window)
+    support_window.title("Support")
     width = 400
     height = 350
-    x = (donate_window.winfo_screenwidth()//2)-(width//2)
-    y = (donate_window.winfo_screenheight()//2)-(height//2)
-    donate_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
-    donate_window.configure(bg="#f0f0f0")
-    donate_label = Label(donate_window)
-    donate_label.configure(font=("Times New Roman", 11, "bold"),highlightbackground='#ffa500', pady=10, highlightcolor='#deb887', highlightthickness=3, takefocus=True,  background="#ffe4c4", foreground="#5c3608", text="Donate:\nIf you enjoyed this program and would\n like to contribute to our work:\n\ndashWoorkz Sovereign Society:\ndashwoorkz@dashwoorkz.ca\n\nE-Transfer:\nLord :Dash: La Londe\nManaging Director:\ndash@dashwoorkz.ca\n\n Bitcoin:\nBTC:38YwKspQ8hdxAmGQUPP7LvXPRucdZURNu5\n\n Merchandise Online:\nhttp://everythingdash.creator-spring.com/")
-    donate_label.pack(fill="both", expand=True)
+    x = (support_window.winfo_screenwidth()//2)-(width//2) +150
+    y = (support_window.winfo_screenheight()//2)-(height//2)
+    support_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+    support_window.configure(bg="#f0f0f0")
+    support_label = Label(support_window)
+    support_label.configure(font=("Times New Roman", 11, "bold"),highlightbackground='#ffa500', pady=10, highlightcolor='#deb887', highlightthickness=3, takefocus=True,  background="#ffe4c4", foreground="#5c3608", text="Donate:\nIf you enjoyed this program and would\n like to contribute to our work:\n\ndashWoorkz Sovereign Society:\ndashwoorkz@dashwoorkz.ca\n\nE-Transfer:\nLord :Dash: La Londe\nManaging Director:\ndash@dashwoorkz.ca\n\n Bitcoin:\nBTC:38YwKspQ8hdxAmGQUPP7LvXPRucdZURNu5\n\n Merchandise Online:\nhttp://everythingdash.creator-spring.com/")
+    support_label.pack(fill="both", expand=True)
     
-
+# End of Support Window
+# ===================
 
 
 def open_contact_window():
@@ -607,7 +639,7 @@ def open_contact_window():
     contact_window.geometry("310x200")
     width = 310
     height = 220
-    x = (contact_window.winfo_screenwidth()//2)-(width//2)
+    x = (contact_window.winfo_screenwidth()//2)-(width//2) +150
     y = (contact_window.winfo_screenheight()//2)-(height//2)
     contact_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
     contact_window.configure(bg="#f0f0f0")
@@ -648,7 +680,7 @@ def open_mit_window():
     mit_window.title("MIT License")
     width = 350
     height = 400
-    x = (mit_window.winfo_screenwidth()//2)-(width//2)
+    x = (mit_window.winfo_screenwidth()//2)-(width//2) + 150
     y = (mit_window.winfo_screenheight()//2)-(height//2)
     mit_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
     mit_window.configure(bg="#f0f0f0")
